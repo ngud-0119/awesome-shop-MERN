@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "@apollo/client": "^3.3.7",
+    "@reduxjs/toolkit": "^1.8.5",
     "@stripe/stripe-js": "^1.38.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -13,8 +14,10 @@
     "jwt-decode": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^8.0.4",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "4.0.1"
+    "react-scripts": "4.0.1",
+    "redux": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
