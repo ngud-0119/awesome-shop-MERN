@@ -3,9 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // slice requires name, initial state, and reducers
 export const categorySlice = createSlice({
-  name: 'product',
+  name: 'category',
   initialState: {
-    products: []
+    categories: [],
+    currentCategory: '',
   },
   reducers: {
     // update categores
