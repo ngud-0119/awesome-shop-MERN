@@ -1,14 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers"
-import { useStoreContext } from '../../utils/GlobalState';
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 
-function ProductItem(item) {
-  const [state, dispatch] = useStoreContext();
+// import ADD_TO_CART and UPDATE_CART_QUANTITY actions from cartSlice
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../redux/features/cartSlice';
+// read data from the store with useSelector, and dispatch actions using useDispatch
+import { useSelector, useDispatch } from 'react-redux';
 
-  const { cart } = state;
+function ProductItem(item) {
+  // read data from the store with the useSelector hook
+  const { cart } = useSelector(state => state.cart);
+  // get the dispatch function with the useDispatch hook, and dispatch actions as needed
+  const dispatch = useDispatch();
 
   const addToCart = () => {
     // find the cart item with the matching id
