@@ -4,26 +4,28 @@ import { useQuery } from '@apollo/client';
 
 import { QUERY_PRODUCTS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
-
-import { useStoreContext } from "../utils/GlobalState";
-import { 
-  REMOVE_FROM_CART,
-  UPDATE_CART_QUANTITY,
-  ADD_TO_CART,
-  UPDATE_PRODUCTS 
-} from "../utils/actions";
-import Cart from '../components/Cart';
 import { idbPromise } from "../utils/helpers";
 
+import Cart from '../components/Cart';
+// import ADD_TO_CART, REMOVE_FROM_CART and UPDATE_CART_QUANTITY actions from cartSlice
+import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '../../src/redux/features/cartSlice';
+// import UPDATE_PRODUCTs action from productSlice
+import { UPDATE_PRODUCTS } from '../../src/redux/features/productSlice';
+// read data from the store with useSelector, and dispatch actions using useDispatch
+import { useSelector, useDispatch } from 'react-redux';
+
 function Detail() {
-  const [state, dispatch] = useStoreContext();
+  // read data from the store with the useSelector hook
+  const { cart } = useSelector(state => state.cart);
+  const { products } = useSelector(state => state.product);
+  // get the dispatch function with the useDispatch hook, and dispatch actions as needed
+  const dispatch = useDispatch();
+
   const { id } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState({})
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-
-  const { products, cart } = state;
 
   useEffect(() => {
     // already in global store
