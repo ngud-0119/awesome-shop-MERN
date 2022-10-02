@@ -14,8 +14,6 @@ import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
-// import StoreProvider to make global state available to all components
-import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
 import Success from './pages/Success';
 
@@ -43,39 +41,37 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
-            <Nav />
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />}
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route 
-                path="/orderHistory" 
-                element={<OrderHistory />} 
-              />
-              <Route 
-                path="/products/:id" 
-                element={<Detail />}
-              />
-              <Route 
-                path="*" 
-                element={<NoMatch />}
-              />
-              <Route
-                path="/success"
-                element={<Success />}
-              />
-            </Routes>
-          </StoreProvider>
+          <Nav />
+          <Routes>
+            <Route 
+              path="/" 
+              element={<Home />} 
+            />
+            <Route 
+              path="/login" 
+              element={<Login />}
+            />
+            <Route 
+              path="/signup" 
+              element={<Signup />} 
+            />
+            <Route 
+              path="/orderHistory" 
+              element={<OrderHistory />} 
+            />
+            <Route 
+              path="/products/:id" 
+              element={<Detail />}
+            />
+            <Route 
+              path="*" 
+              element={<NoMatch />}
+            />
+            <Route
+              path="/success"
+              element={<Success />}
+            />
+          </Routes>
         </div>
       </Router>
     </ApolloProvider>
