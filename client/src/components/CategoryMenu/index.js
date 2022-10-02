@@ -20,28 +20,25 @@ function CategoryMenu() {
     // if categoryData exists or has changed from the response of useQuery, then run dispatch()
     if (categoryData) {
       // execute our dispatch function with our action object indicating the type of action and the data to set our state for categories to
-      dispatch({
-        type: UPDATE_CATEGORIES,
+      dispatch(UPDATE_CATEGORIES({
         categories: categoryData.categories
-      });
+      }));
       categoryData.categories.forEach(category => {
         idbPromise('categories', 'put', category);
       });
     } else if (!loading) {
       idbPromise('categories', 'get').then(categories => {
-        dispatch({
-          type: UPDATE_CATEGORIES,
+        dispatch(UPDATE_CATEGORIES({
           categories: categories
-        });
+        }));
       });
     }
   }, [categoryData, loading, dispatch]);
 
   const handleClick = id => {
-    dispatch({
-      type: UPDATE_CURRENT_CATEGORY,
+    dispatch(UPDATE_CURRENT_CATEGORY({
       currentCategory: id
-    });
+    }));
   };
 
   return (
