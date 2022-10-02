@@ -4,11 +4,10 @@ import { useQuery } from '@apollo/client';
 import ProductItem from '../ProductItem';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import spinner from '../../assets/spinner.gif';
+import { idbPromise } from "../../utils/helpers";
 
 // import UPDATE_PRODUCT action from productSlice
 import { UPDATE_PRODUCTS } from '../../redux/features/productSlice';
-import { idbPromise } from "../../utils/helpers";
-
 // read data from the store with useSelector, and dispatch actions using useDispatch
 import { useSelector, useDispatch } from 'react-redux';
 
