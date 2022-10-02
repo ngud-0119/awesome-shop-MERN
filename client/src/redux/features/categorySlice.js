@@ -13,14 +13,14 @@ export const categorySlice = createSlice({
     UPDATE_CATEGORIES: (state, action) => {
       return {
         ...state,
-        categories: [...action.categories]
+        categories: [...action.payload.categories]
       };
     },
     // update current category
     UPDATE_CURRENT_CATEGORY: (state, action) => {
       return {
         ...state,
-        currentCategory: action.currentCategory
+        currentCategory: action.payload.currentCategory
       };
     }
   }

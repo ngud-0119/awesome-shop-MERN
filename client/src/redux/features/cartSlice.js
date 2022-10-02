@@ -21,22 +21,25 @@ export const cartSlice = createSlice({
       return {
         ...state,
         cartOpen: true,
-        cart: [...state.cart, action.product]
+        cart: [...state.cart, action.payload.product]
       };
     },
     // add multiple items to cart
     ADD_MULTIPLE_TO_CART: (state, action) => {
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        cart: [...state.cart, ...action.payload.products],
       };
     },
     // remove item from cart
     REMOVE_FROM_CART: (state, action) => {
+      // create copy of cart data from state and filter for product id's that do not equal payload id
       let newState = state.cart.filter(product => {
-        return product._id !== action._id;
+        // return new array of products without product specified by payload id
+        return product._id !== action.payload._id;
       });
     
+      // return state, cartOpen, and replace cart with new cart product array
       return {
         ...state,
         cartOpen: newState.length > 0,
@@ -45,18 +48,23 @@ export const cartSlice = createSlice({
     },
     // update item quantity in cart
     UPDATE_CART_QUANTITY: (state, action) => {
+      // create new copy of cart data in state and map array of products
+      let newState = state.cart.map(product => {
+        // if product is equal to id in payload, copy product data, update quantity, and return to array
+        if(product._id === action.payload._id) {
+          return{
+            ...product,
+            purchaseQuantity: action.payload.purchaseQuantity
+          }
+        }
+        // if not equal to id, return product to array
+        return product;
+      })
+      // return opened cart tab and replace old cart with new cart product array
       return {
         ...state,
         cartOpen: true,
-        cart: state.cart.map(product => {
-          if (action._id === product._id) {
-            return {
-              ...state,
-              purchaseQuantity: action.purchaseQuantity
-            }
-          }
-          return product;
-        })
+        cart: newState
       };
     },
     // clear entire cart
