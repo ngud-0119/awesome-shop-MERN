@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // slice requires string name to identify slice, initial state value, and reducers to define how state can be updated
 // helps to simplfy Redux reducer logic and actions
-// immutable reducers written as functions instead of previous switch/case statements
+// reducers written as function making immutable updates to state instead of previous switch/case statements
 // actions creators are generated automatically based on reducer functions
 // combines initial state, reducers, and actions into an object
 export const cartSlice = createSlice({
@@ -14,13 +14,15 @@ export const cartSlice = createSlice({
     cart: [],
     cartOpen: false,
   },
-  // reducers for cart functionality
+  // reducers for cart functionalitynpm  should make a copy of the state, update the copy with new values, and return it
   reducers: {
     // add item to cart
     ADD_TO_CART: (state, action) => {
       return {
+        // copy state
         ...state,
         cartOpen: true,
+        // overwrite cart
         cart: [...state.cart, action.payload.product]
       };
     },
@@ -39,7 +41,7 @@ export const cartSlice = createSlice({
         return product._id !== action.payload._id;
       });
     
-      // return state, cartOpen, and replace cart with new cart product array
+      // return state, cartOpen, and overwrite old cart with new cart product array
       return {
         ...state,
         cartOpen: newState.length > 0,
@@ -60,7 +62,7 @@ export const cartSlice = createSlice({
         // if not equal to id, return product to array
         return product;
       })
-      // return opened cart tab and replace old cart with new cart product array
+      // return state, cartOpen, and overwrite old cart with new cart product array
       return {
         ...state,
         cartOpen: true,
@@ -86,6 +88,9 @@ export const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
+// An action creator is a function that creates and returns an action object. 
+// they prepare and format the contents of action objects
+// they also encapsulate any additional work needed whenever we create those actions
 export const { 
   ADD_TO_CART,
   ADD_MULTIPLE_TO_CART,

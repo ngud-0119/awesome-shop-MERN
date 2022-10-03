@@ -33,6 +33,8 @@ const Cart = () => {
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
+      // dispatch will call the action creator and pass the resulting action directly to dispatch
+      // dispatch(<action_creator_name>({ payload }))
       dispatch(ADD_MULTIPLE_TO_CART({ products: [...cart] }));
     };
   

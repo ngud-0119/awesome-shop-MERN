@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // slice requires name, initial state, and reducers
 export const categorySlice = createSlice({
   name: 'category',
+  // initial state of categories
   initialState: {
     categories: [],
     currentCategory: '',
@@ -12,7 +13,9 @@ export const categorySlice = createSlice({
     // update categores
     UPDATE_CATEGORIES: (state, action) => {
       return {
+        // copy state
         ...state,
+        // overwrite categories
         categories: [...action.payload.categories]
       };
     },

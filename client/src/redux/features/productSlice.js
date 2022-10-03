@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // slice requires name, initial state, and reducers
 export const productSlice = createSlice({
   name: 'product',
+  // initial state of products
   initialState: {
     products: []
   },
@@ -11,7 +12,9 @@ export const productSlice = createSlice({
     // update products
     UPDATE_PRODUCTS: (state, action) => {
       return {
+        // copy state
         ...state,
+        // overwrite products
         products: [...action.payload.products]
       };
     }
