@@ -45,6 +45,9 @@ To check out, logged in users can click on the checkout button at the bottom of 
 
 The following images demonstrate the application's appearance and functionality.
 
+![shop-shop-75043 herokuapp com_](https://user-images.githubusercontent.com/103476893/193700204-2cd7a043-e0e0-46c8-8f5e-0e46f5801248.png)
+
+![checkout stripe com_c_pay_cs_test](https://user-images.githubusercontent.com/103476893/193700218-322e775d-1744-478c-9f52-bda0a46ecd24.png)
 
 ## Technologies Used
 
