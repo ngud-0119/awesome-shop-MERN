@@ -44,27 +44,27 @@ function App() {
           <Nav />
           <Routes>
             <Route 
-              exact path="/" 
+              path="/" 
               element={<Home />} 
             />
             <Route 
-              exact path="/login" 
+              path="/login" 
               element={<Login />} 
             />
             <Route 
-              exact path="/signup" 
+              path="/signup" 
               element={<Signup />} 
             />
             <Route 
-              exact path="/success" 
+              path="/success" 
               element={<Success />} 
             />
             <Route 
-              exact path="/orderHistory" 
+              path="/orderHistory" 
               element={<OrderHistory />} 
             />
             <Route 
-              exact path="/products/:id" 
+              path="/products/:id" 
               element={<Detail />} 
             />
             <Route 
