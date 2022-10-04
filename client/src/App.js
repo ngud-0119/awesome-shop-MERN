@@ -44,23 +44,23 @@ function App() {
           <Nav />
           <Routes>
             <Route 
-              path="/" 
+              exact path="/" 
               element={<Home />} 
             />
             <Route 
-              path="/login" 
+              exact path="/login" 
               element={<Login />}
             />
             <Route 
-              path="/signup" 
+              exact path="/signup" 
               element={<Signup />} 
             />
             <Route 
-              path="/orderHistory" 
+              exact path="/orderHistory" 
               element={<OrderHistory />} 
             />
             <Route 
-              path="/products/:id" 
+              exact path="/products/:id" 
               element={<Detail />}
             />
             <Route 
@@ -68,7 +68,7 @@ function App() {
               element={<NoMatch />}
             />
             <Route
-              path="/success"
+              exact path="/success"
               element={<Success />}
             />
           </Routes>
