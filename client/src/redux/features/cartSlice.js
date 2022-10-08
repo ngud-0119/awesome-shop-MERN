@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
     cart: [],
     cartOpen: false,
   },
-  // reducers for cart functionalitynpm  should make a copy of the state, update the copy with new values, and return it
+  // reducers for cart functionality should make a copy of the state, update the copy with new values, and return it
   reducers: {
     // add item to cart
     ADD_TO_CART: (state, action) => {
